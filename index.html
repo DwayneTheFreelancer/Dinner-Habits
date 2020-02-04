@@ -6,17 +6,48 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DInner Habits</title>
     <link type="text/css" rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif+Caption&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="dinner-habits-app.png" alt="dinner habits">
+            <a href="index.html"><img class="logo" src="img/dinner-habits-app.png" alt="dinner habits"></a>
         </div>
-        <ul class="links">
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </nav>
-<script src="main.js"></script>
+    <main>
+        <section>
+            <img src="img/people-eatting.jpg" alt="dinner habits people eating at table" />
+        </section>
+        <div class="how-it-works">
+            <h1>How It Works</h1>
+            <div class="step-imgs">
+                <img src="img/holding-iphone.jpg" alt="holding iphone">
+                <img src="img/plate-of-food.jpg" alt="plates of food">
+                <img src="img/scale.jpg" alt="body scale">
+            </div>
+        </div>
+        <div class="search-restaurant">
+            <div class="search-title">
+                <h1>Find A Restaurant:</h1>
+            </div>
+            <div class="search-bar">
+                <input class="search" type="text">
+            </div>
+            <div class="search-submit">
+                <button class="submit">Submit</button>
+            </div>
+        </div>
+        <div class="restaurant-list">
+            <h1>Top 10 Best Restaurants</h1>
+            <div id="display-restaurants"></div>
+        </div>
+    </main>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script async defer src="main.js"></script>
 </body>
 </html>
