@@ -100,11 +100,13 @@ section img {
 }
 
 .search-submit > .submit {
-    width: 112px;
-    height: 31px;
+
+    height: 34px;
+    width: 127px;
+    font-size: 21px;
+    background-color: rgba(0,0,0,0.0);
     margin: 20px 39px;
     border-radius: 3px;
-    padding-top: -7px;
     font-size: 24px;
     cursor: pointer;
 }
@@ -119,7 +121,6 @@ section img {
 /* RESTAURANT LIST STYLES */
 
 .restaurant-list {
-    height: 500px;
     width: 100%;
 }
 
@@ -132,10 +133,120 @@ section img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     padding: 25px;
-    border: 1px solid black;
+    font-size: 24px;
+    /* border: 1px solid black; */
 }
 
 #restaurants-info h1 {
+    margin: 21px 0;
+    color: #a0041d;
+}
+
+#restaurants-info img {
+    width: 200px;
+    height: 200px;
+    margin: 21px 0;
+}
+
+#restaurants-info > .address {
+    margin: 21px 0;
+}
+
+#restaurants-info > .categories {
+    margin: 21px 0;
+}
+
+#restaurants-info > .rating {
+    margin: 21px 0;
+}
+
+hr {
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* CALCULATE NUTRIENTS STYLES */
+
+#calculate-nutrients {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 0;
+    padding: 40px 0;
+    border: 1px solid black;
+}
+
+#calculate-nutrients > h1 {
+    margin: 0 auto;
     font-size: 36px;
+}
+
+.nutrient-input {
+    display: flex;
+    justify-content: baseline;
+}
+
+#user-intake {
+    height: 34px;
+    width: 348px;
+    padding-left: 5px;
+}
+
+#user-intake::placeholder {
+    font-size: 21px;
+
+}
+
+#intake-submit {
+    height: 34px;
+    width: 127px;
+    font-size: 21px;
+    background-color: rgba(0,0,0,0.0);
+    cursor: pointer;
+    margin: 0 10px;
+    border-radius: 3px;
+}
+
+#intake-submit:hover {
+    background-color: #a0041d;
+    transition: ease-in 500ms;
+    color: #fff;
+    font-size: 21px;
+}
+
+/* NUTRIENT FACTS STYLES */
+
+.nutrient-facts {
+    display: flex;
+    text-align: center;
+}
+
+.nutrient-facts h1 {
+    margin: 0 auto;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #a0041d;
+    padding: 30px 0;
+}
+
+footer h1 {
+    margin: 0 auto;
+    font-size: 48px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.social-links img {
+    width: 27px;
+    height: 27px;
+    margin: 0 11px;
 }
