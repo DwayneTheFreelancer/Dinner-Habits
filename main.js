@@ -1,13 +1,5 @@
 const RESTAURANT_BASE_URL = `https://developers.zomato.com/api/v2.1/search?q=location=`;
-// const CORS_ANYWHERE = `https://cors-anywhere.herokuapp.com/?`;
 const RESTAURANT_API_KEY = `apikey=9865a983d1e11caa8f7b6e6ef56b5964`;
-
-
-
-
-
-
-
 const searchRestaurant = document.querySelector(".submit");
 const displayRestaurants = document.querySelector("#display-restaurants");
 
@@ -26,31 +18,18 @@ const displayRestaurants = document.querySelector("#display-restaurants");
 
 // restaurants();
 
+const FOOD_BASE_URL = `https://api.spoonacular.com/recipes/guessNutrition?title=`;
+const FOOD_API_KEY = `apiKey=1594518a8c4746e6af5a3ab6327db881`;
+const intakeSubmit = document.querySelector("#intake-submit");
+const displayFacts = document.querySelector("#display-facts");
 
 // Test Second API
 
-const FOOD_BASE_URL = `https://api.spoonacular.com/recipes/guessNutrition?title=`;
-const FOOD_API_KEY = `apiKey=1594518a8c4746e6af5a3ab6327db881`;
-
-let food = async () => {
-    await axios.get(`${FOOD_BASE_URL}Spaghetti+Aglio+et+Olio&${FOOD_API_KEY}`, {
-        "user-key": RESTAURANT_API_KEY,
-        "Content-Type": "application/json"
-    }).then(response => {
-        console.log(response.data.protein.value);
-    }).catch(error => {
-        console.log(error);
-    })
-}
-
-food();
 
 
 
 
-
-
-// Find restaurant search button
+//Find restaurant search button
 searchRestaurant.addEventListener("click", async () => {
     const input = document.querySelector(".search");
     // User input value being stored to API query
@@ -74,7 +53,6 @@ searchRestaurant.addEventListener("click", async () => {
             if (restaurantData[i].restaurant.thumb === "" || restaurantData[i].restaurant.location === "" || restaurantData[i].restaurant.user_rating.aggregate_rating === 0 || restaurantData[i].restaurant.timings === "") {
                 displayRestaurants.innerHTML += `
                     <div id="restaurants-info">
-                        // Add <a href="></a> around h1 and img tags with links to restaurants websites
                         <h1>${restaurantData[i].restaurant.name}</h1>
                         <img src="img/not-available.png" />
                         <div class="address">Address Not Available</div>
@@ -88,8 +66,8 @@ searchRestaurant.addEventListener("click", async () => {
                 // Displays data that was availabale from the API
                 displayRestaurants.innerHTML += `
                 <div id="restaurants-info">
-                    <h1>${restaurantData[i].restaurant.name}</h1>
-                    <img src="${restaurantData[i].restaurant.thumb}" />
+                    <a href=${restaurantData[i].restaurant.url}><h1>${restaurantData[i].restaurant.name}</h1></a>
+                    <a href=${restaurantData[i].restaurant.url}><img src="${restaurantData[i].restaurant.thumb}" /></a>
                     <div class="address">${restaurantData[i].restaurant.location.address}</div>
                     <div class="categories">${restaurantData[i].restaurant.cuisines}</div>
                     <span>${restaurantData[i].restaurant.timings}<span>
@@ -111,3 +89,32 @@ searchRestaurant.addEventListener("click", async () => {
         console.log(error);
     })
 });
+
+
+// Calories calculator button
+
+intakeSubmit.addEventListener("click", async () => {
+    const input = document.querySelector("#user-intake");
+    const uservalue = input.value;
+    const response = await axios.get(`${FOOD_BASE_URL}${uservalue}&${FOOD_API_KEY}`, {
+        "user-key": RESTAURANT_API_KEY,
+        "Content-Type": "application/json"
+    }
+    ).then(response => {
+        const nutrientData = response.data;
+        if (displayFacts.innerHTML !== "") {
+            displayFacts.innerHTML = "";
+        }
+        displayFacts.innerHTML += `
+            <div>Calories: ${nutrientData.calories.value}</div>
+            <div>Carbs: ${nutrientData.carbs.value}</div>
+            <div>Fats: ${nutrientData.fat.value}</div>
+            <div>Proteins: ${nutrientData.protein.value}</div>
+        `;
+        console.log(response.data.calories.value);
+    }).catch(error => {
+        console.log(error);
+    })
+});
+
+
