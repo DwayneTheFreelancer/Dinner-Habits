@@ -421,6 +421,26 @@ input[type=text], input[type=email], select, textarea {
         margin: 100px auto 0 auto;
     }
 
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0 100px 0;
+        background-color: #a0041d;
+        height: 450px;
+        z-index: 10;
+        margin-bottom: 0px;
+    }
+
+    section {
+        /* margin-top: 350px; */
+        height: 400px;
+    }
+
+    /* section img {
+        width: 100%;
+        height: 400px;
+    } */
+
 }
 
 
